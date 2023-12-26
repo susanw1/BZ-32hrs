@@ -17,6 +17,8 @@ public class Player extends Tank
 
 	private boolean forwardJammed, backwardJammed;
 
+	private float turnRate = 0.0f;
+
 	public Player()
 	{
 		forwardJammed = false;
@@ -48,7 +50,16 @@ public class Player extends Tank
 		if ((ctrls & FL) != 0) dir++;
 		// if (hSpeed != 0 || dir != 0) System.out.println
 		// ("Speed="+hSpeed+", dir="+dir);
-		hTurnSpeed = maxTurnSpeed / 2 * dir;
+		if (dir != 0 && turnRate < maxTurnSpeed)
+		{
+			turnRate += maxTurnSpeed / 10;
+		}
+		else if (dir == 0)
+		{
+			turnRate = 0;
+		}
+
+		hTurnSpeed = turnRate / 2 * dir;
 
 		moveAlong(deltaT);
 		if ((ctrls & FIRE) != 0)

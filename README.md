@@ -11,7 +11,7 @@ To run:
 1.  Execute: 
 ```
      cd BattleZone32hrs
-     mvn exec:java
+     mvn compile exec:java
 ```
 
 I did a bit of a rewrite a few years later; I'll try to get that working and push it one of these days. I might even translate it into Javascript and then we can all play it!
